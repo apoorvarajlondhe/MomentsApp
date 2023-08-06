@@ -26,21 +26,21 @@ const Form = () => {
 
     }
 
-    const convertBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-            const file_reader = new FileReader()
-            file_reader.readAsDataURL(file)
+    // const convertBase64 = (file) => {
+    //     return new Promise((resolve, reject) => {
+    //         const file_reader = new FileReader()
+    //         file_reader.readAsDataURL(file)
 
-            file_reader.onload = () => {
-                // console.log(file_reader.result);
-                setPostData({ ...postData, selectedFile: file_reader.result})
-            }
+    //         file_reader.onload = () => {
+    //             // console.log(file_reader.result);
+    //             setPostData({ ...postData, selectedFile: file_reader.result})
+    //         }
 
-            file_reader.onerror = (error) => {
-                console.log(error);
-            }
-        })
-    }
+    //         file_reader.onerror = (error) => {
+    //             console.log(error);
+    //         }
+    //     })
+    // }
 
 
 
