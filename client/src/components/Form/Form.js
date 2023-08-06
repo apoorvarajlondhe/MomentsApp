@@ -26,6 +26,22 @@ const Form = () => {
 
     }
 
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const file_reader = new FileReader()
+            file_reader.readAsDataURL(file)
+
+            file_reader.onload = () => {
+                // console.log(file_reader.result);
+                setPostData({ ...postData, selectedFile: file_reader.result})
+            }
+
+            file_reader.onerror = (error) => {
+                console.log(error);
+            }
+        })
+    }
+
 
 
     return(
@@ -42,11 +58,18 @@ const Form = () => {
                     onDone={({base64}) => setPostData({ ...postData, selectedFile:  base64 })} 
                 />
             </div>
-
+            {/* <Input
+                type='file' 
+                onChange = {(e) => { 
+                    const file = e.target.files[0]
+                    convertBase64(file)
+                }}
+            /> */}
             
             <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
             <Button  variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
             </form> 
+            {/* <img width={350} height={200} src={postData.selectedFile}/> */}
         </Paper>
     );
 }
