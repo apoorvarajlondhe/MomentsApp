@@ -8,21 +8,23 @@ import moment from 'moment';
 
 import useStyles from './styles';
 
-const Post = ({post}) => {
+const Post = ({post, setCurrentId}) => {
     const classes = useStyles;
     return(
         
         <Card className={classes.card}>
-                {/* console.log({post.selectedFile}) */}
-
-            <CardMedia className={classes.media} image={post.selectedFile} title={post.title}  />
+            {/* console.log({post.selectedFile}) */}
+            {/* <img width={350} height={200} src={post.selectedFile}/> */}
+            <img className="media" width={350} height={200} src={post.selectedFile} alt={post.title} />
+            {/* below line is not displaying image */}
+            <CardMedia className={classes.media} image={post.selectedFile}  title={post.title}  />
             <div className={classes.overlay}>
                 <Typography variant="h6" >{post.creator}</Typography>
                 <Typography variant="body2" >{moment(post.createdAt).fromNow()}</Typography>
             </div>
 
             <div className={classes.overlay2}>
-                <Button style={{color: 'white'}} size="small" onClick={() => {}} >
+                <Button style={{color: 'black'}} size="large" onClick={() => setCurrentId(post._id) } >
                     <MoreHorizIcon fontSize="default"/>
                 </Button>
             </div>
