@@ -1,12 +1,13 @@
 import React, { useState} from "react";
-import { TextField, Button, Typography, Paper, Input } from "@mui/material";
+import { TextField, Button, Typography, Paper } from "@mui/material";
 import useStyles from './styles';
 import FileBase64 from 'react-file-base64';
 import { useDispatch} from 'react-redux';
-import { createPost } from "../../actions/posts";
+import { createPost, updatePost } from "../../actions/posts";
+
 //import { render } from "react-dom";
 
-
+//get current id
 
 
 const Form = ({currentId, setCurentId}) => {
@@ -18,7 +19,14 @@ const Form = ({currentId, setCurentId}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        dispatch(createPost(postData));
+        if(currentId){
+
+            dispatch(updatePost(currentId, postData));
+        } else{
+
+            dispatch(createPost(postData));
+        }
+        
     }
     
 
