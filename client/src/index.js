@@ -1,6 +1,7 @@
 import React from 'react';
 import  ReactDOM  from 'react-dom';
-import { Provider } from 'react-redux';
+    import { Provider } from 'react-redux';
+
 import { legacy_createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
@@ -12,9 +13,11 @@ import './index.css';
 const store = legacy_createStore(reducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
-    <Provider store={store}>
+        <Provider store={store}>
         <App /> 
-    </Provider>,
+    </Provider> 
+
+    ,
     document.getElementById('root')
 
 );
